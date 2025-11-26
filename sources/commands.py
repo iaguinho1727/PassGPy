@@ -12,7 +12,7 @@ import sources.core as core
 
 
 app=typer.Typer(no_args_is_help=True)
-DEFAULT_COUNT=10
+DEFAULT_COUNT=1
 DEFAULT_LENGTH=20
 
 @app.command()
