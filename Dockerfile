@@ -17,5 +17,5 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT [ "python3", "." ]
+ENTRYPOINT [ "python3", "passg" ]
 

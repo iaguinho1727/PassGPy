@@ -4,9 +4,10 @@ import os
 import pathlib
 import re
 import random
-import shutil
+
+
 class CLI():
-    from sources.commands import DEFAULT_COUNT,DEFAULT_LENGTH
+    from src.passg import DEFAULT_COUNT,DEFAULT_LENGTH
     TEST_PATH=pathlib.Path('tests')
     TMP_PATH=TEST_PATH.joinpath('tmp')
     SCREENS_PATH=TEST_PATH.joinpath('screens')

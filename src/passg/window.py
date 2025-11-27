@@ -1,9 +1,8 @@
 import tkinter as tk
 from tkinter import font as tkfont
 from tkinter import filedialog
-from sources.commands import DEFAULT_COUNT,DEFAULT_LENGTH
+from src.passg.commands import DEFAULT_COUNT,DEFAULT_LENGTH
 import typing as t
-import sys
 import pathlib
 
 class GUI:
@@ -78,10 +77,10 @@ class GUI:
         
         
     def on_generate(self):
-        import sources.core as core
+        import src.passg.core as core
         length=self.states['length_slider'].get()
         count=self.states['count_slider'].get()
-        passwords=core.generate_passwords(count,length)
+        passwords= core.generate_passwords(count, length)
         write_to_file=self.states['write_to_file'].get()
         if not(write_to_file):
             self.widgets['textbox'].delete('1.0',tk.END)

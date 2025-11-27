@@ -1,14 +1,11 @@
 import rich.errors
 import typer
-import random
-import string
 import rich
 import typing as t
 import os
-import uuid
 import sys
-from sources.prompts import Prompt as p
-import sources.core as core
+from src.passg.prompts import Prompt as p
+import src.passg.core as core
 
 
 app=typer.Typer(no_args_is_help=True)
@@ -35,9 +32,9 @@ def generate(length: int=DEFAULT_LENGTH,count: int=DEFAULT_COUNT,output_path : t
     if(length<=0 or count<=0):
         raise ValueError("Length and Count should be greater than 0")
     
-    passwords=core.generate_passwords(count,length)
+    passwords= core.generate_passwords(count, length)
     if output_path is None and not(use_pager):
-        core.write_passwords_to_file_descriptor(passwords,sys.stdout)
+        core.write_passwords_to_file_descriptor(passwords, sys.stdout)
         exit(0)
     
     if output_path is None:
@@ -51,7 +48,7 @@ def generate(length: int=DEFAULT_LENGTH,count: int=DEFAULT_COUNT,output_path : t
 
     try:
         with open(output_path,mode) as f:
-            core.write_passwords_to_file_descriptor(passwords,f)
+            core.write_passwords_to_file_descriptor(passwords, f)
     except FileExistsError:
         rich.print("[red] Please choose another file name [/red]",file=sys.stderr)
     except Exception as e:
@@ -61,6 +58,6 @@ def generate(length: int=DEFAULT_LENGTH,count: int=DEFAULT_COUNT,output_path : t
 
 @app.command()
 def gui():
-    from sources.window import GUI
+    from src.passg.window import GUI
     myGui=GUI()
     myGui.run()
